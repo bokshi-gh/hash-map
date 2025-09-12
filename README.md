@@ -16,9 +16,11 @@ A simple hash map implementation in C supporting string keys and generic `void*`
 
 ### Files
 
-src/hashmap.h - Header file containing structs and function prototypes.
-src/hashmap.c - Implementation of hash map functions.
-src/main.c - Example usage of the hash map.
+| File        | Description                                             |
+| ----------- | ------------------------------------------------------- |
+| `hashmap.h` | Header file containing structs and function prototypes. |
+| `hashmap.c` | Implementation of hash map functions.                   |
+| `main.c`    | Example usage of the hash map.                          |
 
 ### Installation and Usage
 
