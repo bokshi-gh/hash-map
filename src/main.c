@@ -1,54 +1,31 @@
+#include "hash_map.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include "hashmap.h"
 
 int main() {
-    // Create a hash map
-    HashMap* map = createHashMap();
+    // Create hashmap
+    HashMap *map = hash_map_create(10);
 
-    // Insert string values
-    insert(map, "apple", "red");
-    insert(map, "banana", "yellow");
-    insert(map, "grape", "purple");
+    // Insert key-value pairs
+    hash_map_put(map, "apple", "red");
+    hash_map_put(map, "banana", "yellow");
+    hash_map_put(map, "grape", "purple");
 
-    // Insert integer values (demonstrating generic void* values)
-    int* num1 = malloc(sizeof(int));
-    *num1 = 42;
-    insert(map, "answer", num1);
+    // Retrieve
+    printf("apple = %s\n", (char*)hash_map_get(map, "apple"));
+    printf("banana = %s\n", (char*)hash_map_get(map, "banana"));
 
-    int* num2 = malloc(sizeof(int));
-    *num2 = 100;
-    insert(map, "hundred", num2);
+    // Update
+    hash_map_put(map, "banana", "green");
+    printf("banana (updated) = %s\n", (char*)hash_map_get(map, "banana"));
 
-    // Search for string values
-    char* color = (char*)search(map, "banana");
-    if (color != NULL) 
-        printf("banana -> %s\n", color);
+    // Remove
+    char *removed = (char*)hash_map_remove(map, "grape");
+    printf("Removed grape = %s\n", removed);
 
-    color = (char*)search(map, "grape");
-    if (color != NULL)
-        printf("grape -> %s\n", color);
+    printf("grape = %s\n", (char*)hash_map_get(map, "grape")); // Should be NULL
 
-    // Search for integer values
-    int* val = (int*)search(map, "answer");
-    if (val != NULL)
-        printf("answer -> %d\n", *val);
-
-    val = (int*)search(map, "hundred");
-    if (val != NULL)
-        printf("hundred -> %d\n", *val);
-
-    // Delete a key
-    deleteKey(map, "apple");
-    color = (char*)search(map, "apple");
-    if (color == NULL)
-        printf("apple has been deleted\n");
-
-    // Clean up
-    free(num1);
-    free(num2);
-    freeHashMap(map);
+    // Free map
+    hash_map_free(map);
 
     return 0;
 }
-
