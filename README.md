@@ -1,41 +1,12 @@
-# hashmap
+# Hash Map
 
-## Overview
-
-A simple hash map implementation in C supporting string keys and generic `void*` values using separate chaining for collision resolution.
-
-## Features
-
-- Insert, Search, and Delete key-value pairs.
-- Handles string keys with generic values (void*).
-- Uses linked lists (chaining) to handle collisions.
-- Simple djb2 string hash function.
-- Memory management supported via freeHashMap().
+A [hash map](https://en.wikipedia.org/wiki/Hash_table) implementation in C.
 
 ## Getting Started
 
-### Files
+Check the following files:
 
-| File        | Description                                             |
-| ----------- | ------------------------------------------------------- |
-| `hashmap.h` | Header file containing structs and function prototypes. |
-| `hashmap.c` | Implementation of hash map functions.                   |
-| `main.c`    | Example usage of the hash map.                          |
+- `include/hash_map.h` - struct and function definition
+- `src/hash_map.c.c` - function implementation
+- `src/main.c` - example code demonstrating how to use the `HashMap` struct
 
-### Installation and Usage
-
-1. **Clone the repository:**
-    ```sh
-    git clone https://github.com/bokshi-gh/hashmap
-    cd hashmap
-    ```
-
-2. **Compile:**
-    ```sh
-    gcc -I./include src/main.c src/hashmap.c -o hashmap_example
-    ```
-    
-3. **Run:**
-    ```sh
-    ./hashmap_example
-    ```
