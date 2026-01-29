@@ -18,10 +18,6 @@ typedef struct {
     size_t table_size;
 } HashMap;
 
-// Hash functions
-unsigned long hash_djb2(const char *str);
-unsigned long long hash_fnv1a(const char *str);
-
 // HashMap functions
 void hash_map_init(HashMap *m, size_t table_size);
 HashMap* hash_map_create(size_t table_size);
@@ -30,4 +26,8 @@ void* hash_map_get(HashMap *m, char *key);
 void* hash_map_remove(HashMap *m, char *key);
 void hash_map_free(HashMap *m);
 
-#endif // HASH_MAP_H
+// Hash functions
+unsigned long hash_djb2(const char *str);
+unsigned long long hash_fnv1a(const char *str);
+
+#endif
