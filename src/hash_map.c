@@ -1,30 +1,5 @@
 #include "hash_map.h"
 
-// djb2 Hash
-unsigned long hash_djb2(const char *str)
-{
-    unsigned long long hash = 5381;
-    int c;
-
-    while ((c = *str++))
-    {
-        hash = ((hash << 5) + hash) + c; // hash * 33 + c
-    }
-    return hash;
-}
-
-// FNV-1a Hash
-unsigned long long hash_fnv1a(const char *str)
-{
-    unsigned long long hash = 14695981039346656037ULL; // 64-bit offset
-    while (*str)
-    {
-        hash ^= (unsigned char)(*str++);
-        hash *= 1099511628211ULL; // 64-bit FNV prime
-    }
-    return hash;
-}
-
 void hash_map_init(HashMap *m, size_t table_size)
 {
     if (!m)
@@ -148,4 +123,29 @@ void hash_map_free(HashMap *m)
 
     free(m->hash_table);
     free(m);
+}
+
+// djb2 Hash
+unsigned long hash_djb2(const char *str)
+{
+    unsigned long long hash = 5381;
+    int c;
+
+    while ((c = *str++))
+    {
+        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    }
+    return hash;
+}
+
+// FNV-1a Hash
+unsigned long long hash_fnv1a(const char *str)
+{
+    unsigned long long hash = 14695981039346656037ULL; // 64-bit offset
+    while (*str)
+    {
+        hash ^= (unsigned char)(*str++);
+        hash *= 1099511628211ULL; // 64-bit FNV prime
+    }
+    return hash;
 }
