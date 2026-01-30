@@ -30,4 +30,4 @@ void hash_map_free(HashMap *m);
 unsigned long hash_djb2(const char *str);
 unsigned long long hash_fnv1a(const char *str);
 
-#endif
+#endif // HASH_MAP_H
